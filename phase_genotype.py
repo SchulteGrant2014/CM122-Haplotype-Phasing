@@ -107,11 +107,11 @@ def haplotypeComplement(haplotype, genotype):
 # Main function to run upon running this script
 if __name__ == "__main__":
     
-    """
+    
     # Run the genotype phasing algorithm
     start = time.time()
     
-    #genotype = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    #genotype = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     genotype = [2, 1, 0, 1, 0, 1, 2, 2, 0]
     phases = phaseGenotype(genotype)
     
@@ -122,13 +122,13 @@ if __name__ == "__main__":
         if i == 1:
             numOnes += 1
     
-    print phases
+    #print phases
     print "Total number of haplotypes:", len(phases)
     print "Length of genotype:", len(genotype)
     print "Number of heterozygous positions:", numOnes
     print "Phasing this genotype took " + str(end-start) + " seconds."
-    """
     
+    """
     # Run the haplotype complement algorithm
     genotype = [2, 1, 0, 1, 0, 1, 2, 2, 0]
     haplotype = [1, 0, 0, 1, 0, 0, 1, 1, 0]
@@ -137,7 +137,7 @@ if __name__ == "__main__":
     print genotype
     print haplotype
     print complementaryHaplotype
-    
+    """
 
 
 
