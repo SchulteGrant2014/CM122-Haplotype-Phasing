@@ -48,7 +48,7 @@ def phaseGenotypeRecurse(genotype, i):
             newPhase.append(0)
             phases.append(newPhase)
     
-    else:  # if currentSNP == 1
+    elif (currentSNP == 1):
         # Create 2 new haplotypes for each current haplotype
         for haplotype in range(0, len(precedingPhases)):
             phase1 = list(precedingPhases[haplotype])
@@ -57,6 +57,8 @@ def phaseGenotypeRecurse(genotype, i):
             phase2.append(0)
             phases.append(phase1)
             phases.append(phase2)
+    else:
+        raise ValueError("Genotype at index " + str(i) + " is not a valid symbol from the set {0, 1, 2}! Check that the provided genotype is correct. Error in phaseGenotypeRecurse().")
     
     # Return the newly constructed list of phases which includes the current SNP position, phased.
     return phases
@@ -94,7 +96,10 @@ def haplotypeComplement(haplotype, genotype):
         genotypeVal = genotype[i]
         haplotypeVal = haplotype[i]
         if ((genotypeVal == 2 and haplotypeVal != 1) or (genotypeVal == 0 and haplotypeVal != 0)):
-            raise ValueError("Haplotype is not compatible with genotype at index " + str(i) + " in function haplotypeComplement()!")
+            if not isinstance(haplotype[i], int):
+                raise ValueError("Haplotype at SNP index " + str(i) + " is not of type int! Check that the provided haplotype is a single haplotype and not a list of all possible genotype phases. Error in haplotypeComplement().")
+            else:
+                raise ValueError("Haplotype is not compatible with genotype at index " + str(i) + " in function haplotypeComplement()!")
         else:
             complement.append(genotypeVal - haplotypeVal)
     
