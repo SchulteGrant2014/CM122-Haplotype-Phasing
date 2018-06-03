@@ -8,6 +8,7 @@ Created on Sat Jun  2 14:52:04 2018
 
 from phase_genotype import phaseGenotype
 from phase_genotype import haplotypeComplement
+from load_genome import load_genome_faster
 import time
 
 
