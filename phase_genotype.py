@@ -85,6 +85,11 @@ def phaseGenotype(genotype):
 # @param genotype The genotype made up of the given haplotype and some
 # other unknown haplotype
 def haplotypeComplement(haplotype, genotype):
+    
+    # Make sure that the correct object type was provided to the function
+    if not isinstance(haplotype, list):
+        raise ValueError("Haplotype provided to haplotypeComplement() is not a list!")
+    
     # Check that the haplotype and genotype provided are of the same length
     if len(haplotype) != len(genotype):
         raise ValueError("The lengths of Haplotype and Genotype arguments provided to haplotypeComplement() are not equal!")
@@ -117,7 +122,8 @@ if __name__ == "__main__":
     start = time.time()
     
     #genotype = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    genotype = [2, 1, 0, 1, 0, 1, 2, 2, 0]
+    #genotype = [2, 1, 0, 1, 0, 1, 2, 2, 0]
+    genotype = [2, 1, 1, 1, 0]
     phases = phaseGenotype(genotype)
     
     end = time.time()
@@ -127,7 +133,7 @@ if __name__ == "__main__":
         if i == 1:
             numOnes += 1
     
-    #print phases
+    print phases
     print "Total number of haplotypes:", len(phases)
     print "Length of genotype:", len(genotype)
     print "Number of heterozygous positions:", numOnes
