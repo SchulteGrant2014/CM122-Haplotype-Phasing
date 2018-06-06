@@ -108,7 +108,7 @@ def expectation_maximization(genotypes, numberOfIterations):
     start = time.time()
     # Update the probabilities of each haplotype to be equal, initially (our "guess")
     initial_haplo_prob = (1.0 / numHaplotypes)
-    for haplo in haplotypeProbDict.iterkeys():
+    for haplo in haplotypeProbDict.keys():
         haplotypeProbDict[haplo] = initial_haplo_prob  # Initialize haplotype probability to [1 / (number of unique haplotypes)]
     
     
@@ -196,7 +196,7 @@ def expectation_maximization(genotypes, numberOfIterations):
     np_result = np.array(maxProbabilityPhasesList).transpose()
     
     end = time.time()
-    print "EM took", end - start, "seconds."
+    print("EM took", end - start, "seconds.")
     
     return np_result
 
@@ -216,7 +216,7 @@ def em_windowed(genotypes, windowSize, numberOfIterations, fileOutputName):
     #for i in range(0, 10):
         
         endOfWindow = min(startPos + windowSize, len(genotypes[0]))
-        print endOfWindow
+        print(endOfWindow)
         
         if endOfWindow == len(genotypes[0]):
             finishedWithAllWindows = True
@@ -232,7 +232,7 @@ def em_windowed(genotypes, windowSize, numberOfIterations, fileOutputName):
     #print chunkAnswers
     
     end = time.time()
-    print "This algorithm took", end - start, "seconds to run."
+    print("This algorithm took", end - start, "seconds to run.")
     
     
     fileOutput = open(fileOutputName, 'w')
@@ -250,7 +250,7 @@ def testDatasetFromClass():
     genotypesToPhase = [[2, 1, 1, 1, 0], [1, 0, 0, 0, 1], [2, 2, 2, 2, 1]]
     numIterations = 16
     result = expectation_maximization(genotypesToPhase, numIterations)
-    print result
+    print(result)
 
 
 
@@ -261,7 +261,7 @@ if __name__ == "__main__":
     #testDatasetFromClass()
     
     genotypes = load_genome_faster("./CM124 Programming Assignment Guidelines/example_data_1.txt")
-    em_windowed(genotypes, 8, 16, "example_data_1_answer_NEW.txt")
+    em_windowed(genotypes, 8, 16, "example_data_1_answer_window10_iter16_py3.txt")
 
 
 

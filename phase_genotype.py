@@ -136,11 +136,11 @@ if __name__ == "__main__":
         if i == 1:
             numOnes += 1
     
-    print phases
-    print "Total number of haplotypes:", len(phases)
-    print "Length of genotype:", len(genotype)
-    print "Number of heterozygous positions:", numOnes
-    print "Phasing this genotype took " + str(end-start) + " seconds."
+    print(phases)
+    print("Total number of haplotypes:", len(phases))
+    print("Length of genotype:", len(genotype))
+    print("Number of heterozygous positions:", numOnes)
+    print("Phasing this genotype took " + str(end-start) + " seconds.")
     
     """
     # Run the haplotype complement algorithm
