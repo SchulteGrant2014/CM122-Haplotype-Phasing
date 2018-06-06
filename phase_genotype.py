@@ -27,6 +27,8 @@ def phaseGenotypeRecurse(genotype, i):
             return [[0]]
         else:  # genotype[i] == 1
             return [[1], [0]]
+    elif i < 0:
+        raise ValueError("Reached a negative index value in phaseGenotypeRecurse()")
     
     # Otherwise, get the phases leading up to our current SNP
     precedingPhases = phaseGenotypeRecurse(genotype, i-1)  # List of lists/haplotype phases
@@ -121,6 +123,7 @@ if __name__ == "__main__":
     # Run the genotype phasing algorithm
     start = time.time()
     
+    # Use a custom input
     #genotype = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     #genotype = [2, 1, 0, 1, 0, 1, 2, 2, 0]
     genotype = [2, 1, 1, 1, 0]
