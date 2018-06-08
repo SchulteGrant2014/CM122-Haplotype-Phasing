@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
@@ -11,6 +12,7 @@ from phase_genotype import haplotypeComplement
 from load_genome import load_genome_faster
 import time
 import numpy as np
+import sys
 
 
 def calcHaplotypeProbability(expectation, numGenotypes):
@@ -259,9 +261,20 @@ if __name__ == "__main__":
     
     # For testing purposes, run the algorithm on dataset from class, unwindowed:
     #testDatasetFromClass()
+    fileToUse = sys.argv[1]
+    print("Loading " + fileToUse)
+    genotypes = load_genome_faster("./CM124 Programming Assignment Guidelines/" + fileToUse) #"test_data_1.txt")
     
-    genotypes = load_genome_faster("./CM124 Programming Assignment Guidelines/example_data_1.txt")
-    em_windowed(genotypes, 8, 16, "example_data_1_answer_window10_iter16_py3.txt")
+    windowSize = 1
+    numIterations = 1
+    if fileToUse == "test_data_1.txt":  # 43010 SNPs
+        windowSize = 9
+        numIterations = 16
+    elif fileToUse == "test_data_2.txt":  # 93712 SNPs
+        windowSize = 8
+        numIterations = 16
+    
+    em_windowed(genotypes, windowSize, numIterations, fileToUse[:len(fileToUse)-4] + "_sol.txt")  #"test_data_1_answer_window8_iter16_py36.txt"
 
 
 
